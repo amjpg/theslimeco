@@ -1,8 +1,50 @@
+/* body font is Georgia with a light purple background color and muted black font */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:#f4ebfa;
+  color:#383440;
+  font-family:Georgia;
 }
 
-a {
-  color: #00B7FF;
+/* first heading font is Times, italics and a purple color font */
+h1 {
+  font-family:Times;
+  font-style:italic;
+  color:#6f4a75;
 }
+
+/* second heading font is Garamond and a dark brown color font */
+h2 {
+  font-family:Garamond;
+  color:#523f47;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+li a.active {
+  color: white;
+  background-color: #4CAF50;
+}
+  
