@@ -1,0 +1,14 @@
+<h1>New</h1>
+<!-- NOTE: YOU CAN ONLY CREATE A NEW SALE IF THE CUSTOMER IS EXISTING. MUST INPUT CUSTOMER ID -->
+<form action="/sales" method="post">
+    <table>
+        <tr> <td> Customer ID: </td> <td> <input type="number" name="customerid"> </td> </tr>
+        <tr> <td> Order Date: </td> <td> <input type="text" name="orderdate" required> </td> </tr>
+        <tr> <td> Discount: </td> <td> <input type="text" name="discount" required>  </td> </tr>
+        <tr> <td> Payment Method: </td> <td> <input type="text" name="paymentmethod" required> </td> </tr>
+        <tr> <td> Total Amount: </td> <td> <input type="text" name="totalAmt" required> </td> </tr>
+        <tr> <td> Shipping Address: </td> <td> <input type="text" name="shippingaddress" required> </td> </tr>
+        <tr> <td> Order Status: </td> <td> <input type="text" name="orderstatus" required> </td> </tr>
+    </table>
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,27 @@
+<% if (allrecs.length > 0) {%>
+    <table>
+        <tr>
+            <th>Subscription ID</th>
+            <th>Customer ID</th>
+            <th>Subscription Type</th>
+            <th>Subscription Status</th>
+            <th colspan="3">Actions</th>
+        </tr>
+      <% allrecs.forEach((recref, index) => { %>
+        <tr> 
+            <td><%= recref.subscriptionid %></td>
+            <td><%= recref.customerid %></td>
+            <td><%= recref.subscriptiontype %></td>
+            <td><%= recref.subscriptionstatus %></td>
+            <td><a href='/subscriptions/<%= recref.subscriptionid %>/show'> Details</a></td>
+            <td><a href='/subscriptions/<%= recref.subscriptionid %>/edit'>Edit</a></td>
+            <td><a href='/subscriptions/<%= recref.subscriptionid %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+            </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+        <p>Not Records Available</p>
+    <% } %>
+
+<p> <a href='/subscriptions/addrecord'>Add New</a> </p>
+

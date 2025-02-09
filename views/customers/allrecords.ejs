@@ -1,0 +1,34 @@
+<% if (allrecs.length > 0) {%>
+    <table>
+        <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th colspan="3">Actions</th>
+        </tr>
+      <% allrecs.forEach((recref, index) => { %>
+        <tr> 
+            <td><%= recref.customerid %></td>
+            <td><%= recref.firstname %></td>
+            <td><%= recref.lastname %></td>
+            <td><%= recref.city %></td>
+            <td><%= recref.state %></td>
+            <td><%= recref.email %></td>
+            <td><%= recref.phonenum %></td>
+            <td><a href='/customers/<%= recref.customerid %>/show'> Details</a></td>
+            <td><a href='/customers/<%= recref.customerid %>/edit'>Edit</a></td>
+            <td><a href='/customers/<%= recref.customerid %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+            </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+        <p>Not Records Available</p>
+    <% } %>
+
+<p> <a href='/customers/addrecord'>Add New</a> </p>
+
+
