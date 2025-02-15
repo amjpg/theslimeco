@@ -1,0 +1,14 @@
+<h1>Edit Reviews</h1>
+<form action="/reviews/save" method="post">
+   <input type="hidden" name="reviewid" value="<%= onerec.reviewid %>" >
+<table>
+	<tr> <td> Product ID: </td> <td> <input type="text" name="productid" value="<%= onerec.productid %>" required>  </td> </tr>
+    <tr> <td> Customer ID: </td> <td> <input type="text" name="customerid" value="<%= onerec.customerid %>" required>  </td> </tr>
+	<tr> <td> Review Date: </td> <td> <input type="date" name="reviewdate" value="<%= onerec.reviewdate.toISOString().split('T')[0] %>" required> </td> </tr>
+	<tr> <td> Comments: </td> <td> <input type="text" name="comments" value="<%= onerec.comments %>" required> </td> </tr>
+	<tr> <td> Rating: </td> <td> <input type="text" name="rating" value="<%= onerec.rating %>" required> </td> </tr>
+    <tr> <td> Published Status: </td> <td> <input type="text" name="publishedstatus" value="<%= onerec.publishedstatus %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>
+
