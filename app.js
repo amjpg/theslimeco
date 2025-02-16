@@ -38,6 +38,8 @@ var subscriptionsRouter = require('./routes/subscriptions');
 var orderdetailsRouter = require('./routes/orderdetails');
 var marketingRouter = require('./routes/marketing');
 var reviewsRouter = require('./routes/reviews');
+var suppliersRouter = require('./routes/suppliers');
+var inventoryRouter = require('./routes/inventory');
 
 var app = express();
 
@@ -65,6 +67,8 @@ app.use('/subscriptions', subscriptionsRouter);
 app.use('/orderdetails', orderdetailsRouter);
 app.use('/marketing', marketingRouter);
 app.use('/reviews', reviewsRouter);
+app.use('/suppliers', suppliersRouter);
+app.use('/inventory', inventoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

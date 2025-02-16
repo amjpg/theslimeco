@@ -1,0 +1,12 @@
+<h1>Edit Inventory</h1>
+<form action="/inventory/save" method="post">
+   <input type="hidden" name="inventoryid" value="<%= onerec.inventoryid %>" >
+<table>
+    <tr> <td> Product ID: </td> <td> <input type="text" name="productid" value="<%= onerec.productid %>" required>  </td> </tr>
+	<tr> <td> Stock Level: </td> <td> <input type="text" name="stocklvl" value="<%= onerec.stocklvl %>" required> </td> </tr>
+	<tr> <td> Supplier ID: </td> <td> <input type="text" name="supplierid" value="<%= onerec.supplierid %>" required> </td> </tr>
+	<tr> <td> Cost Per Unit: </td> <td> <input type="text" name="costperunit" value="<%= onerec.costperunit %>" required> </td> </tr>
+</table>
+<button type="submit">Save</button>
+</form>
+
