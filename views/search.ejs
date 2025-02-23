@@ -1,0 +1,17 @@
+<h1>Search</h1>
+<% if (allrecs.length > 0) {%>
+      <% allrecs.forEach((recref, index) => { %>
+	    <products>
+		<table> 
+			<tr>	<td colspan="2"><%= recref.productname %></td></tr>
+			<tr>	<td colspan="2"><%= recref.prodimage %></td></tr>
+			<tr>	<td><%= recref.description %> </td></tr>
+			<tr>	<td><%= recref.price %></td></tr>
+			<tr>	<td colspan="2"><a href='/products/<%= recref.productid %>/show'>Details</a></td></tr>
+		</table>
+	    </products>
+    <% }); %>
+
+<% } else { %>
+     <p>Not Records Available</p>
+<% } %>

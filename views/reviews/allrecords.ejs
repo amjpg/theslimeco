@@ -14,7 +14,7 @@
             <td><%= recref.reviewid %></td>
             <td><%= recref.productid %></td>
             <td><%= recref.customerid %></td>
-            <td><%= recref.reviewdate %></td>
+            <td><%= recref.reviewdate.toISOString().split('T')[0] %></td>
             <td><%= recref.comments %></td>
             <td><%= recref.rating %></td>
             <td><a href='/reviews/<%= recref.reviewid %>/show'>Details</a></td>

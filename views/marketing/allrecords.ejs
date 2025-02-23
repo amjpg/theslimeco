@@ -11,10 +11,10 @@
         </tr>
       <% allrecs.forEach((recref, index) => { %>
         <tr> 
-            <td><%= recref.marketingpromoid %></td>
+            <td align="center"><%= recref.marketingpromoid %></td>
             <td><%= recref.promoname %></td>
-            <td><%= recref.startdate %></td>
-            <td><%= recref.enddate %></td>
+            <td><%= recref.startdate.toISOString().split('T')[0] %></td>
+            <td><%= recref.enddate.toISOString().split('T')[0] %></td>
             <td><%= recref.budget %></td>
             <td><%= recref.performance %></td>
             <td><a href='/marketing/<%= recref.marketingpromoid %>/show'>Details</a></td>

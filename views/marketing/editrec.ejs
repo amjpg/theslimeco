@@ -3,8 +3,8 @@
    <input type="hidden" name="marketingpromoid" value="<%= onerec.marketingpromoid %>" >
 <table>
     <tr> <td> Promo Name: </td> <td> <input type="text" name="promoname" value="<%= onerec.promoname %>" required> </td> </tr>
-	<tr> <td> Start Date: </td> <td> <input type="text" name="startdate" value="<%= onerec.startdate %>" required>  </td> </tr>
-	<tr> <td> End Date: </td> <td> <input type="text" name="enddate" value="<%= onerec.enddate %>" required> </td> </tr>
+	<tr> <td> Start Date: </td> <td> <input type="date" name="startdate" value="<%= onerec.startdate.toISOString().split('T')[0] %>" required>  </td> </tr>
+	<tr> <td> End Date: </td> <td> <input type="date" name="enddate" value="<%= onerec.enddate.toISOString().split('T')[0] %>" required> </td> </tr>
 	<tr> <td> Budget: </td> <td> <input type="text" name="budget" value="<%= onerec.budget %>" required> </td> </tr>
 	<tr> <td> Platform: </td> <td> <input type="text" name="platform" value="<%= onerec.platform %>" required> </td> </tr>
     <tr> <td> Performance: </td> <td> <input type="text" name="performance" value="<%= onerec.performance %>" required> </td> </tr>

@@ -1,4 +1,34 @@
-<h1>Welcome to <%= title %> Application!</h1>
-<p>The Slime Co. has a wide variety of slime products that will 
-  suit any need, from stress relief to a unique gift for a friend!
-</p>
+<table border="1"> 
+  <tr><td width="80%">
+    <h1>Welcome to <%= title %> Application!</h1>
+    <p>The Slime Co. has a wide variety of slime products that will 
+      suit any need, from stress relief to a unique gift for a friend!
+    </p>
+
+    <% if (allrecs.length > 0) {%>
+      <% allrecs.forEach((recref, index) => { %>
+        <products>
+            <table> 
+              <tr>	<td colspan="2"><%= recref.productname %></td></tr>
+              <tr>	<td colspan="2"><%= recref.prodimage %></td></tr>
+              <tr>	<td><%= recref.description %> </td></tr>
+              <tr>  <td><%= recref.features %></td></tr>
+              <tr>  <td><%= recref.price %></td></tr>
+              <tr>	<td colspan="2"><a href='/products/<%= recref.productid %>/show'>Details</a></td></tr>
+            </table>
+        </products>
+      <% }); %>
+    <% } %>
+  </td>
+
+  <td width="20%">
+    <% if (promos.length > 0) {%>
+			<table> 
+     		 		<% promos.forEach((recref, index) => { %>
+					    <tr><td><img src="/images/<%= recref.promoimage %>.jpg" width="200" height="200"></td></tr>
+ 			  	<% }); %>
+		</table>
+ 	<% } %>
+
+  </td>
+</tr></table>

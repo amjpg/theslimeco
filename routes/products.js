@@ -7,7 +7,7 @@ var router = express.Router();
 // ==================================================
 
 router.get('/', function(req, res, next) {
-let query = "SELECT productid, productname, description, price, features, color FROM products"; 
+let query = "SELECT productid, productname, description, price, features, color, homepage FROM products"; 
 
   // execute query
   db.query(query, (err, result) => {
@@ -25,7 +25,7 @@ let query = "SELECT productid, productname, description, price, features, color 
 // URL: http://localhost:3025/products/3/show
 // ==================================================
 router.get('/:recordid/show', function(req, res, next) {
-    let query = "SELECT productid, productname, description, price, features, color FROM products WHERE productid = " + req.params.recordid; 
+    let query = "SELECT productid, productname, description, price, features, color, homepage FROM products WHERE productid = " + req.params.recordid; 
     
     // execute query
     db.query(query, (err, result) => {
@@ -53,9 +53,15 @@ router.get('/addrecord', function(req, res, next) {
 // ==================================================
 router.post('/', function(req, res, next) {
 
-    let insertquery = "INSERT INTO products (productname, prodimage, description, features, size, color, price, prodtype, dateadded) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
+    let insertquery = "INSERT INTO products (productname, prodimage, description, features, size, color, price, prodtype, dateadded, homepage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
     
-    db.query(insertquery,[req.body.productname, req.body.prodimage, req.body.description, req.body.features, req.body.size, req.body.color, req.body.price, req.body.prodtype, req.body.dateadded],(err, result) => {
+    var homepage_value=0;
+    if (req.body.homepage)
+        {
+            homepage_value = 1;
+        }
+
+    db.query(insertquery,[req.body.productname, req.body.prodimage, req.body.description, req.body.features, req.body.size, req.body.color, req.body.price, req.body.prodtype, req.body.dateadded, homepage_value],(err, result) => {
         if (err) {
                 console.log(err);
                 res.render('error');
@@ -70,7 +76,7 @@ router.post('/', function(req, res, next) {
 // URL: http://localhost:3025/product/3/edit
 // ==================================================
 router.get('/:recordid/edit', function(req, res, next) {
-    let query = "SELECT productid, productname, description, price, features, color, size, prodtype, prodimage FROM products WHERE productid = " + req.params.recordid;
+    let query = "SELECT productid, productname, description, price, features, color, size, prodtype, prodimage, homepage FROM products WHERE productid = " + req.params.recordid;
     
       // execute query
       db.query(query, (err, result) => {
@@ -88,9 +94,16 @@ router.get('/:recordid/edit', function(req, res, next) {
 // Route to save edited data in database.
 // ==================================================
 router.post('/save', function(req, res, next) {
-	let updatequery = "UPDATE products SET productname = ?, prodimage = ?, description = ?, features = ?, color = ?, size = ?, prodtype = ?, prodimage = ? WHERE productid = " + req.body.productid; 
+	let updatequery = "UPDATE products SET productname = ?, prodimage = ?, description = ?, features = ?, color = ?, size = ?, prodtype = ?, prodimage = ?, homepage = ? WHERE productid = " + req.body.productid; 
 
-	db.query(updatequery,[req.body.productname, req.body.prodimage, req.body.description, req.body.features, req.body.color, req.body.size, req.body.prodtype, req.body.prodimage],(err, result) => {
+    var homepage_value=0;
+    if (req.body.homepage)
+        {
+            homepage_value = 1;
+        }
+        
+
+	db.query(updatequery,[req.body.productname, req.body.prodimage, req.body.description, req.body.features, req.body.color, req.body.size, req.body.prodtype, req.body.prodimage, homepage_value],(err, result) => {
 		if (err) {
 			console.log(err);
 			res.render('error');
