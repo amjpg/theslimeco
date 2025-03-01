@@ -2,16 +2,22 @@
     <table>
         <tr>
             <th>Order ID</th>
-            <th>Customer ID</th>
-            <th>Total Amount</th>
-            <th>Order Status</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Order Date</th>
         </tr>
       <% allrecs.forEach((recref, index) => { %>
         <tr> 
-            <td><%= recref.saleorderid %></td>
-            <td><%= recref.customerid %></td>
-            <td><%= recref.totalAmt %></td>
-            <td><%= recref.orderstatus %></td>
+            <td><%= recref.orderid %></td>
+            <td><%= recref.firstname %></td>
+            <td><%= recref.lastname %></td>
+            <td><%= recref.productname %></td>
+            <td><%= recref.qty %></td>
+            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.subtotal) %> </b> <br/>%></td>
+            <td><%= recref.orderdate.toISOString().split('T')[0] %></td>
             </tr>
     <% }); %>
     </table>

@@ -15,7 +15,7 @@
             <td><%= recref.productid %></td>
             <td><%= recref.productname %></td>
             <td><%= recref.description %></td>
-            <td><%= recref.price %></td>
+            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.price) %> </b> <br/>%></td>
             <td><%= recref.features %></td>
             <td><%= recref.color %></td>
             <td align="center"><%= recref.homepage %></td>

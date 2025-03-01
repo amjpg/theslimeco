@@ -11,7 +11,7 @@
         <tr> 
             <td><%= recref.saleorderid %></td>
             <td><%= recref.customerid %></td>
-            <td><%= recref.totalAmt %></td>
+            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.totalAmt) %> </b> <br/>%></td>
             <td><%= recref.orderstatus %></td>
             <td><a href='/sales/<%= recref.saleorderid %>/show'> Details</a></td>
             <td><a href='/sales/<%= recref.saleorderid %>/edit'>Edit</a></td>

@@ -15,7 +15,7 @@
             <td><%= recref.promoname %></td>
             <td><%= recref.startdate.toISOString().split('T')[0] %></td>
             <td><%= recref.enddate.toISOString().split('T')[0] %></td>
-            <td><%= recref.budget %></td>
+            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.budget) %> </b> <br/>%></td>
             <td><%= recref.performance %></td>
             <td><a href='/marketing/<%= recref.marketingpromoid %>/show'>Details</a></td>
             <td><a href='/marketing/<%= recref.marketingpromoid %>/edit'>Edit</a></td>

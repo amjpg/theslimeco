@@ -14,7 +14,7 @@
             <td><%= recref.saleorderid %></td>
             <td><%= recref.productid %></td>
             <td><%= recref.quantity %></td>
-            <td><%= recref.subtotal %></td>
+            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.subtotal) %> </b> <br/>%></td>
             <td><a href='/orderdetails/<%= recref.orderdetailsid %>/show'> Details</a></td>
             <td><a href='/orderdetails/<%= recref.orderdetailsid %>/edit'>Edit</a></td>
             <td><a href='/orderdetails/<%= recref.orderdetailsid %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>

@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var layouts = require('express-ejs-layouts');
+const session = require('express-session');
+
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -42,9 +44,16 @@ var suppliersRouter = require('./routes/suppliers');
 var inventoryRouter = require('./routes/inventory');
 var reportsRouter = require('./routes/reports');
 var searchRouter = require('./routes/search');
+var catalogRouter = require('./routes/catalog');
 
 
 var app = express();
+
+app.use(session({secret: 'TheSlimeCoAppSecret'}));
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -74,6 +83,7 @@ app.use('/suppliers', suppliersRouter);
 app.use('/inventory', inventoryRouter);
 app.use('/reports', reportsRouter);
 app.use('/search', searchRouter);
+app.use('/catalog', catalogRouter);
 
 
 // catch 404 and forward to error handler

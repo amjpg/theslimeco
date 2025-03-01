@@ -13,7 +13,7 @@
               <tr>	<td colspan="2"><%= recref.prodimage %></td></tr>
               <tr>	<td><%= recref.description %> </td></tr>
               <tr>  <td><%= recref.features %></td></tr>
-              <tr>  <td><%= recref.price %></td></tr>
+              <tr>  <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.price) %> </b> <br/>%></td>
               <tr>	<td colspan="2"><a href='/products/<%= recref.productid %>/show'>Details</a></td></tr>
             </table>
         </products>

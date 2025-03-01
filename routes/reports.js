@@ -48,7 +48,9 @@ router.get('/products', function(req, res, next) {
 // ==================================================
 
 router.get('/sales', function(req, res, next) {
-    let query = "SELECT saleorderid, customerid, totalAmt, orderstatus FROM sales"; 
+    // query joins data from orderdetails, products, sales and customers tables
+    // displays columns from multiple tables to create a sales report
+    let query = "SELECT od.orderdetailsid orderid, c.firstname firstname, c.lastname lastname, p.productname productname, od.quantity qty, od.subtotal subtotal, s.orderdate orderdate FROM orderdetails od, sales s, customers c, products p WHERE s.saleorderid = od.orderdetailsid AND s.customerid = c.customerid AND od.productid = p.productid";
     
       // execute query
       db.query(query, (err, result) => {

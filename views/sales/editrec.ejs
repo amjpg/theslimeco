@@ -3,7 +3,7 @@
    <input type="hidden" name="saleorderid" value="<%= onerec.saleorderid %>" >
 <table>
 	<tr> <td> Customer ID: </td> <td> <input type="number" name="customerid" value="<%= onerec.customerid %>" required> </td> </tr>
-	<tr> <td> Order Date: </td> <td> <input type="text" name="orderdate" value="<%= onerec.orderdate %>" required>  </td> </tr>
+	<tr> <td> Order Date: </td> <td> <input type="date" name="orderdate" value="<%= onerec.orderdate.toISOString().split('T')[0] %>" required>  </td> </tr>
 	<tr> <td> Discount: </td> <td> <input type="text" name="discount" value="<%= onerec.discount %>" required> </td> </tr>
 	<tr> <td> Payment Method: </td> <td> <input type="text" name="paymentmethod" value="<%= onerec.paymentmethod %>" required> </td> </tr>
 	<tr> <td> Total Amount: </td> <td> <input type="text" name="totalAmt" value="<%= onerec.totalAmt %>" required> </td> </tr>
