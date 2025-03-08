@@ -81,5 +81,44 @@ router.post('/remove', function(req, res, next) {
 
 });
 
+// ==================================================
+// Route save cart items to SALES and ORDERDETAILS tables
+// ==================================================
+router.get('/checkout', function(req, res, next) {
+	// Check to make sure the customer has logged-in
+	if (typeof req.session.customerid !== 'undefined' && req.session.customerid ) {
+		// Save SALES Record:
+		let insertquery = "INSERT INTO sales(customerid, orderdate, discount, paymentmethod, orderstatus) VALUES (?, now(), '0', 'Credit Card', 'Paid')"; 
+		db.query(insertquery,[req.session.customerid],(err, result) => {
+			if (err) {
+				console.log(err);
+				res.render('error');
+			} else {
+				// Obtain the order_id value of the newly created SALEORDER Record
+				var orderid = result.insertId;
+				// Save ORDERDETAILS Records
+				// There could be one or more items in the shopping cart
+				req.session.cart.forEach((cartitem, index) => { 
+					// Perform ORDERDETAIL table insert
+					let insertquery = "INSERT INTO orderdetails(orderid, productid, quantity, unitprice) VALUES (?, ?, (SELECT unitprice from orderdetails where productid = " + cartitem + "), ?)";
+					db.query(insertquery,[orderid, cartitem, req.session.qty[index]],(err, result) => {
+						if (err) {res.render('error');}
+					});
+				});
+				// Empty out the items from the cart and quantity arrays
+				req.session.cart = [];
+				req.session.qty = [];
+				// Display confirmation page
+				res.render('checkout', {ordernum: orderid });
+				}		
+			});
+	}
+	else {
+		// Prompt customer to login
+		res.redirect('/customers/login');
+	}
+});
+
+
 
 module.exports = router;
