@@ -3,7 +3,6 @@
         <tr>
             <th>Order ID</th>
             <th>Customer ID</th>
-            <th>Total Amount</th>
             <th>Order Status</th>
             <th colspan="3">Actions</th>
         </tr>
@@ -11,7 +10,7 @@
         <tr> 
             <td><%= recref.saleorderid %></td>
             <td><%= recref.customerid %></td>
-            <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.totalAmt) %> </b> <br/>%></td>
+            <!-- <td><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.totalAmt) %> </b> <br/>%></td> -->
             <td><%= recref.orderstatus %></td>
             <td><a href='/sales/<%= recref.saleorderid %>/show'> Details</a></td>
             <td><a href='/sales/<%= recref.saleorderid %>/edit'>Edit</a></td>

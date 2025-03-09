@@ -4,8 +4,8 @@
 <table>
     <tr> <td> Subscription ID: </td> <td> <input type="number" name="subscriptionid" value="<%= onerec.subscriptionid %>" required> </td> </tr>
 	<tr> <td> Subscription Type: </td> <td> <input type="text" name="subscriptiontype" value="<%= onerec.subscriptiontype %>" required>  </td> </tr>
-	<tr> <td> Start Date: </td> <td> <input type="text" name="startdate" value="<%= onerec.startdate %>" required> </td> </tr>
-	<tr> <td> End Date: </td> <td> <input type="text" name="enddate" value="<%= onerec.enddate %>" required> </td> </tr>
+	<tr> <td> Start Date: </td> <td> <input type="date" name="startdate" value="<%= onerec.startdate.toISOString().split('T')[0] %>" required> </td> </tr>
+	<tr> <td> End Date: </td> <td> <input type="date" name="enddate" value="<%= onerec.enddate.toISOString().split('T')[0] %>" required> </td> </tr>
 	<tr> <td> Subscription Status: </td> <td> <input type="text" name="subscriptionstatus" value="<%= onerec.subscriptionstatus %>" required> </td> </tr>
 </table>
 <button type="submit">Save</button>

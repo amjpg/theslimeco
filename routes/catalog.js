@@ -100,7 +100,8 @@ router.get('/checkout', function(req, res, next) {
 				// There could be one or more items in the shopping cart
 				req.session.cart.forEach((cartitem, index) => { 
 					// Perform ORDERDETAIL table insert
-					let insertquery = "INSERT INTO orderdetails(orderid, productid, quantity, unitprice) VALUES (?, ?, (SELECT unitprice from orderdetails where productid = " + cartitem + "), ?)";
+					let insertquery = "INSERT INTO orderdetails(saleorderid, productid, quantity, unitprice, subtotal) VALUES (?, ?, ?, (SELECT price from products where productid = " + cartitem + "), 0)";
+					console.log("\n\n\n " + insertquery + "\n\n\n");
 					db.query(insertquery,[orderid, cartitem, req.session.qty[index]],(err, result) => {
 						if (err) {res.render('error');}
 					});
